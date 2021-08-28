@@ -16,7 +16,7 @@
 * 原作者的Heroku脚本为多协议共存脚本，该项目使用v2ray+caddy，同时部署通过ws传输模式的vmess vless trojan-go shadowsocks socks等协议，默认已配置好伪装网站。  
 
 ## 服务端创建操作流程 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/YG-tsj/hkok)  
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/ckhis-droid/Ht-tok)  
 点击上面紫色`Deploy to Heroku`，会跳转到heroku app创建页面，填上应用程序名、选择节点（美国或者欧洲）、自定义UUID码，其他建议保持默认，点击下面deploy，几秒后搞定！    
 
 ## vmess vless trojan-go shadowsocks对应客户端参数的参考如下,末尾带()里的内容仅为提示
@@ -69,41 +69,6 @@ addEventListener(
             host = SingleDay
         } else {
             host = DoubleDay
-        }
-        
-        let url=new URL(event.request.url);
-        url.hostname=host;
-        let request=new Request(url,event.request);
-        event. respondWith(
-            fetch(request)
-        )
-    }
-)
-```
-----------------------------------------------------------------------------------------------
-```
-const Day0 = 'app0.herokuapp.com'
-const Day1 = 'app1.herokuapp.com'
-const Day2 = 'app2.herokuapp.com'
-const Day3 = 'app3.herokuapp.com'
-const Day4 = 'app4.herokuapp.com'
-addEventListener(
-    "fetch",event => {
-    
-        let nd = new Date();
-        let day = nd.getDate() % 5;
-        if (day === 0) {
-            host = Day0
-        } else if (day === 1) {
-            host = Day1
-        } else if (day === 2) {
-            host = Day2
-        } else if (day === 3){
-            host = Day3
-        } else if (day === 4){
-            host = Day4
-        } else {
-            host = Day1
         }
         
         let url=new URL(event.request.url);
